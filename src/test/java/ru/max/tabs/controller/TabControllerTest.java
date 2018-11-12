@@ -17,10 +17,8 @@ import ru.max.tabs.dto.TabFilter;
 import ru.max.tabs.dto.TabItem;
 
 import java.math.BigInteger;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;

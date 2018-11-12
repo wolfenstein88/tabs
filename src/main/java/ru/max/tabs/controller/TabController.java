@@ -17,9 +17,11 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping(path = "/tabs", produces = APPLICATION_JSON_VALUE)
 public class TabController {
 
+    /**
+     * Get tab by ID
+     */
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public ResponseEntity getByID(@PathVariable(value = "id") BigInteger id) {
-
         if (BigInteger.ZERO.equals(id)) {
             return new ResponseEntity<>(new ErrorItem("code", "message"), HttpStatus.NOT_FOUND);
         }
@@ -28,6 +30,9 @@ public class TabController {
     }
 
 
+    /**
+     * Get tab by filter
+     */
     @RequestMapping(path = "/filter", method = RequestMethod.POST, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity getByFilter(@RequestBody TabFilter filter) {
 
@@ -42,7 +47,9 @@ public class TabController {
         return new ResponseEntity<>(tabs, HttpStatus.OK);
     }
 
-
+    /**
+     * Update tab with ID
+     */
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity updateTabById(@PathVariable BigInteger id, @RequestBody TabItem tabItem) {
 
@@ -53,6 +60,9 @@ public class TabController {
         return new ResponseEntity<>(tabItem, HttpStatus.OK);
     }
 
+    /**
+     * Create new tab
+     */
     @RequestMapping(method = RequestMethod.POST, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity create(@RequestBody TabItem tabItem) {
         if (tabItem == null) {
@@ -64,6 +74,9 @@ public class TabController {
         return new ResponseEntity<>(tabItem, HttpStatus.OK);
     }
 
+    /**
+     * Delete tab with ID
+     */
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity delete(@PathVariable(value = "id") BigInteger id) {
         return new ResponseEntity<>(null, HttpStatus.OK);
